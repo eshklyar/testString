@@ -16,6 +16,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+
+    NSInteger myCount = [self numberOfOcc:@"cake" inString:@"Cheesecake, apple cake, and cherry pie"];
+
+    NSLog(@"myCount is %ld", (long)myCount);
+
+
+
+
     NSString *abc = @"this is test";
 
     abc = [NSString stringWithFormat:@"%@%@",[[abc substringToIndex:1] uppercaseString],[abc substringFromIndex:1] ];
@@ -124,5 +133,25 @@
                               usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
                                   [reversedString appendString:substring];
                               }];
+}
+
+-(NSInteger) numberOfOcc:(NSString*)searchString inString:(NSString*) someString{
+
+    NSUInteger count = 0, length = [someString length];
+    //location, length
+    NSRange range = NSMakeRange(0, length);
+    while(range.location != NSNotFound)
+        {
+            NSLog(@"first location %lu", (unsigned long)range.location);
+            range = [someString rangeOfString: searchString options:0 range:range];
+            if(range.location != NSNotFound)
+            {
+                 NSLog(@"seconf location %lu", (unsigned long)range.location);
+                range = NSMakeRange(range.location + range.length, length - (range.location + range.length));
+                 NSLog(@"third location %lu", (unsigned long)range.location);
+                count++;
+            }
+        }
+    return count;
 }
 @end
