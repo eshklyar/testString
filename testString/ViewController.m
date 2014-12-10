@@ -16,7 +16,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSArray *array = @[ @"thing 2", @"thing 1", @"thing 3" ];
+    NSLog(@"array %@", array[1]);
+    NSDictionary* dict = @{@"key1":@"value1"};
+     NSLog(@"dict %@", dict[@"key1"]);
+    NSMutableArray* mutArray = [array mutableCopy];
+    [mutArray addObject:@"thing4"];
+    NSLog(@"mutArray %@", mutArray);
 
+    NSArray *ukMakes = @[@"Aston Martin", @"Lotus", @"Jaguar", @"Bentley"];
+    NSLog(@"yo yo %@", [ukMakes componentsJoinedByString:@", "]);
+      NSLog(@"yo yo2  %@", ukMakes[2]);
 
     NSInteger myCount = [self numberOfOcc:@"cake" inString:@"Cheesecake, apple cake, and cherry pie"];
 
@@ -61,6 +71,7 @@
 //    revString = [revString stringByReplacingCharactersInRange:NSMakeRange(0,1) withString:[[revString substringToIndex:1] uppercaseString]];
     NSLog(@"rev %@", revString);
 
+    //first occurance of "c"
     NSString *anotherString = @"abccc";
     NSRange anotherRange = [anotherString rangeOfString:@"c" options:NSCaseInsensitiveSearch range:NSMakeRange(0,anotherString.length)];
 
